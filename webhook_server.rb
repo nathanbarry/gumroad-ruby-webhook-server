@@ -1,4 +1,3 @@
-# webhook_server.rb
 require 'rubygems'
 require 'sinatra'
 require 'activerecord'
@@ -19,7 +18,7 @@ post '/gumroad-webhook' do
     :price       => params[:price]
     :licence_key => license_key
   )
-  "http://www.license-key.com/this-file/#{license_key}"
+  "http://nathanbarry.com/"
 end
 
 get '/this-file/:license_key' do |key|
