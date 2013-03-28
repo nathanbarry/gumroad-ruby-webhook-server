@@ -14,11 +14,11 @@ ActiveRecord::Base.establish_connection(
 post '/gumroad-webhook' do
   license_key = generate_license_key 
   Entry.create(
-    :email       => params[:email]
-    :price       => params[:price]
+    :email       => params[:email],
+    :price       => params[:price],
     :license_key => license_key
   )
-  "http://nathanbarry.com/"
+  "http://www.license-key.com/this-file/#{license_key}"
 end
 
 get '/this-file/:license_key' do |key|
