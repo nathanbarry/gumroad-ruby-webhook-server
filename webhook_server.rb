@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'active_record'
+require 'activerecord'
 
 def generate_license_key
   rand(9999999)  
