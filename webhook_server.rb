@@ -12,22 +12,24 @@ ActiveRecord::Base.establish_connection(
 )
 
 post '/gumroad-webhook' do
-  license_key = generate_license_key 
-  Entry.create(
-    :email       => params[:email],
-    :price       => params[:price],
-    :license_key => license_key
-  )
-  "http://www.license-key.com/this-file/#{license_key}"
+  begin
+	  license_key = generate_license_key 
+	  Entry.create(
+	    :email       => params[:email],
+	    :price       => params[:price],
+	    :license_key => license_key
+	  )
+	  "http://www.license-key.com/this-file/#{license_key}"
   rescue => e
     "Error Occured"
   end
 end
 
 get '/this-file/:license_key' do |key|
-  entry = Entry.find_by_license_key(key)
-  return "Invalid Key" unless entry.present?
-  send_file('download_file.txt')
+  begin
+	  entry = Entry.find_by_license_key(key)
+	  return "Invalid Key" unless entry.present?
+	  send_file('download_file.txt')
   rescue => e
     "Error Occured"
   end
