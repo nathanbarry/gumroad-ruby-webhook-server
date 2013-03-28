@@ -16,7 +16,7 @@ post '/gumroad-webhook' do
   Entry.create(
     :email       => params[:email]
     :price       => params[:price]
-    :licence_key => license_key
+    :license_key => license_key
   )
   "http://nathanbarry.com/"
 end
