@@ -36,4 +36,4 @@ get '/this-file/:license_key' do |key|
 end
 
 #class Entry < ActiveRecord::Base
-end
+#end
