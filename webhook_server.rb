@@ -7,8 +7,13 @@ def generate_license_key
 end
 
 ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :dbfile => 'db/test.sqlite3.db'
+	:adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+	:host     => db.host,
+	:port     => db.port,
+	:username => db.user,
+	:password => db.password,
+	:database => db.path[1..-1],
+	:encoding => 'utf8'
 )
 
 post '/gumroad-webhook' do
