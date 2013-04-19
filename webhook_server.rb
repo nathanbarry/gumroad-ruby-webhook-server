@@ -1,15 +1,15 @@
 require 'rubygems'
 require 'sinatra'
-#require 'active_record'
+require 'sinatra/activerecord'
 
 def generate_license_key
   rand(9999999)  
 end
 
-#ActiveRecord::Base.establish_connection(
-#  :adapter => 'sqlite3',
-#  :dbfile => 'db/test.sqlite3.db'
-#)
+ActiveRecord::Base.establish_connection(
+  :adapter => 'sqlite3',
+  :dbfile => 'db/test.sqlite3.db'
+)
 
 post '/gumroad-webhook' do
   begin
@@ -35,5 +35,5 @@ get '/this-file/:license_key' do |key|
   end
 end
 
-#class Entry < ActiveRecord::Base
-#end
+class Entry < ActiveRecord::Base
+end
